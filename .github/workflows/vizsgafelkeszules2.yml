@@ -1,0 +1,23 @@
+name: C++ Build and Test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Set up C++ environment
+        run: sudo apt-get install g++
+
+      - name: Compile C++ program
+        run: g++ -o hello-world src/Hello.cpp
+      - name: Run the program
+        run: ./hello-world
